@@ -43,5 +43,19 @@ print("-----------")
 for specific_product in products:
     print("+", (specific_product["name"]), to_usd(specific_product["price"]))
 
-print("-----------")
+### PART 2
+dept = []
+ 
+for specific_product in products:
+    dept.append(specific_product["department"])
 
+unique_dept = list(set(dept))
+
+unique_dept.sort()
+
+print("-----------")
+print("THERE ARE", len(unique_dept), "DEPARTMENTS")
+ 
+for specific_dept  in unique_dept:
+    dept_count=[d for d in products if d["department"] == specific_dept]
+    print("+", specific_dept.title(), "(" + str(len(dept_count)) + ")") 
