@@ -2,6 +2,11 @@
 
 #from pprint import pprint
 
+import operator
+
+def to_usd(my_price):
+    return f"(${my_price:,.2f})"
+
 products = [
     {"id":1, "name": "Chocolate Sandwich Cookies", "department": "snacks", "aisle": "cookies cakes", "price": 3.50},
     {"id":2, "name": "All-Seasons Salt", "department": "pantry", "aisle": "spices seasonings", "price": 4.99},
@@ -25,7 +30,18 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
 ] # based on data from Instacart: https://www.instacart.com/datasets/grocery-shopping-2017
 
-print(products)
-# pprint(products)
+#print(products)
+#pprint(products)
 
 # TODO: write some Python code here to produce the desired output
+products =  sorted(products, key=operator.itemgetter('name'))
+
+
+print("-----------")
+print("THERE ARE", len(products), "PRODUCTS")
+print("-----------")
+for specific_product in products:
+    print("+", (specific_product["name"]), to_usd(specific_product["price"]))
+
+print("-----------")
+
