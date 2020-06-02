@@ -4,6 +4,18 @@
 
 import operator
 
+import csv
+
+csv_filepath = "products.csv" # a relative filepath
+
+with open(csv_filepath, "r") as csv_file: # "r" means "open the file for reading"
+    reader = csv.DictReader(csv_file) # assuming your CSV has headers
+    # reader = csv.reader(csv_file) # if your CSV doesn't have headers
+    for row in reader:
+        print(row["id"], row["name"], row["price"])
+
+
+'''
 def to_usd(my_price):
     return f"(${my_price:,.2f})"
 
@@ -59,3 +71,5 @@ print("THERE ARE", len(unique_dept), "DEPARTMENTS")
 for specific_dept  in unique_dept:
     dept_count=[d for d in products if d["department"] == specific_dept]
     print("+", specific_dept.title(), "(" + str(len(dept_count)) + ")") 
+
+'''
